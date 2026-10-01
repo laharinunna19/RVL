@@ -1,0 +1,908 @@
+:root {
+    --red: #b4232f;
+    --deep: #741824;
+    --ink: #211b1c;
+    --muted: #75696a;
+    --paper: #fffaf9;
+    --soft: #f7e9e7;
+    --line: #ead8d5;
+}
+
+* {
+    box-sizing: border-box;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    margin: 0;
+    background: var(--paper);
+    color: var(--ink);
+    font-family: "DM Sans", sans-serif;
+}
+
+.grain {
+    position: fixed;
+    inset: 0;
+    pointer-events: none;
+    opacity: .045;
+    z-index: 10;
+
+    background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 180 180' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.8' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='.5'/%3E%3C/svg%3E");
+}
+
+.progress {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 3px;
+    z-index: 30;
+}
+
+.progress span {
+    display: block;
+    height: 100%;
+    width: 0;
+    background: var(--red);
+}
+
+.music {
+    position: fixed;
+    right: 20px;
+    top: 20px;
+    z-index: 31;
+
+    width: 44px;
+    height: 44px;
+
+    border: 1px solid var(--line);
+    border-radius: 50%;
+
+    background: white;
+    color: var(--red);
+
+    font-size: 20px;
+    cursor: pointer;
+
+    box-shadow: 0 8px 25px #6f18230f;
+}
+
+.music-note {
+    position: fixed;
+    right: 72px;
+    top: 22px;
+
+    z-index: 29;
+
+    background: white;
+    border: 1px solid var(--line);
+
+    padding: 9px 12px;
+
+    border-radius: 14px;
+
+    font-size: 11px;
+    color: var(--muted);
+
+    opacity: 0;
+    transform: translateY(-5px);
+
+    transition: .3s;
+
+    pointer-events: none;
+}
+
+.music:hover + .music-note {
+    opacity: 1;
+    transform: none;
+}
+
+.section {
+    min-height: 100vh;
+
+    padding: 90px 7vw;
+
+    position: relative;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    overflow: hidden;
+}
+
+
+/* HERO */
+
+.hero {
+    flex-direction: column;
+    text-align: center;
+
+    background:
+        radial-gradient(
+            circle at 50% 30%,
+            #fff 0,
+            #fffaf9 50%,
+            #f9ecea 100%
+        );
+}
+
+.hero-bg {
+    position: absolute;
+
+    width: 65vw;
+    height: 65vw;
+
+    max-width: 760px;
+    max-height: 760px;
+
+    border-radius: 50%;
+
+    background:
+        radial-gradient(
+            circle,
+            #fff 10%,
+            #f6dfdc 60%,
+            transparent 70%
+        );
+
+    opacity: .7;
+}
+
+.kicker {
+    position: relative;
+
+    text-transform: uppercase;
+    letter-spacing: .25em;
+
+    font-size: 10px;
+
+    color: var(--red);
+
+    font-weight: 700;
+
+    margin: 0 0 20px;
+}
+
+.hero h1,
+.section h2 {
+    font-family: "Cormorant Garamond", serif;
+
+    font-weight: 500;
+
+    line-height: .95;
+
+    margin: 0;
+}
+
+.hero h1 {
+    font-size: clamp(60px, 10vw, 130px);
+
+    position: relative;
+}
+
+.hero h1 i,
+.section h2 i {
+    color: var(--red);
+}
+
+.lead {
+    position: relative;
+
+    max-width: 520px;
+
+    color: var(--muted);
+
+    line-height: 1.7;
+
+    margin: 28px 0 36px;
+}
+
+.start {
+    border: 1px solid var(--red);
+
+    background: var(--red);
+    color: white;
+
+    padding: 14px 22px;
+
+    border-radius: 999px;
+
+    font-weight: 600;
+
+    cursor: pointer;
+
+    box-shadow: 0 14px 35px #b4232f24;
+}
+
+.start span {
+    margin-left: 12px;
+}
+
+.heart {
+    position: absolute;
+
+    color: #c73745;
+
+    font-family: serif;
+
+    opacity: .28;
+
+    font-size: 90px;
+}
+
+.h1 {
+    left: 9%;
+    top: 22%;
+
+    transform: rotate(-18deg);
+}
+
+.h2 {
+    right: 12%;
+    bottom: 20%;
+
+    transform: rotate(15deg);
+}
+
+
+/* PEOPLE */
+
+.person {
+    gap: 8vw;
+}
+
+.person.reverse {
+    flex-direction: row-reverse;
+    background: white;
+}
+
+.copy {
+    width: 40%;
+    max-width: 480px;
+}
+
+.section h2 {
+    font-size: clamp(48px, 7vw, 90px);
+}
+
+.copy h3 {
+    font:
+        500 clamp(42px, 5vw, 68px)
+        "Cormorant Garamond", serif;
+
+    color: var(--red);
+
+    margin: 28px 0 0;
+}
+
+.nick {
+    font-family: "Cormorant Garamond", serif;
+
+    font-size: 28px;
+
+    color: var(--muted);
+
+    margin-top: 4px;
+}
+
+.portrait {
+    width: min(42vw, 510px);
+
+    margin: 0;
+}
+
+.portrait img {
+    width: 100%;
+
+    height: min(72vh, 650px);
+
+    object-fit: cover;
+
+    border-radius: 180px 180px 20px 20px;
+
+    box-shadow: 0 35px 80px #6b202414;
+}
+
+.portrait figcaption {
+    text-align: center;
+
+    color: #998c8c;
+
+    font-size: 11px;
+
+    letter-spacing: .12em;
+
+    text-transform: uppercase;
+
+    margin-top: 16px;
+}
+
+
+/* RENU + VARSH */
+
+.friendship {
+    display: block;
+
+    background:
+        linear-gradient(
+            #fff,
+            #fff7f6
+        );
+
+    padding-top: 120px;
+    padding-bottom: 120px;
+}
+
+.center {
+    text-align: center;
+
+    max-width: 800px;
+
+    margin: 0 auto 55px;
+}
+
+.intro {
+    color: var(--muted);
+
+    line-height: 1.7;
+
+    max-width: 560px;
+
+    margin: 20px auto;
+}
+
+.friendship h2 span,
+.pair h2 span {
+    color: var(--red);
+
+    font-family: "DM Sans";
+
+    font-size: .5em;
+
+    vertical-align: middle;
+}
+
+.pair-gallery {
+    max-width: 1050px;
+
+    margin: auto;
+
+    display: grid;
+
+    grid-template-columns: 1fr 1fr;
+
+    gap: 22px;
+
+    align-items: end;
+}
+
+.pair-gallery figure {
+    margin: 0;
+
+    position: relative;
+}
+
+.pair-gallery img {
+    width: 100%;
+
+    height: 55vh;
+
+    object-fit: cover;
+
+    border-radius: 18px;
+}
+
+.pair-gallery .big img {
+    height: 65vh;
+}
+
+.pair-gallery span {
+    position: absolute;
+
+    bottom: 15px;
+    left: 15px;
+
+    background: white;
+
+    padding: 7px 12px;
+
+    border-radius: 99px;
+
+    font-size: 10px;
+
+    letter-spacing: .15em;
+
+    text-transform: uppercase;
+}
+
+.quote,
+.message {
+    max-width: 720px;
+
+    margin: 60px auto 0;
+
+    text-align: center;
+}
+
+.quote-mark {
+    font:
+        100px/0.4
+        "Cormorant Garamond";
+
+    color: var(--red);
+}
+
+.quote p,
+.message p {
+    font:
+        500 30px/1.2
+        "Cormorant Garamond";
+
+    margin: 18px 0;
+}
+
+.quote small,
+.message small {
+    color: var(--muted);
+
+    line-height: 1.6;
+}
+
+.song {
+    text-align: center;
+
+    margin: 35px auto 0;
+
+    color: var(--red);
+
+    font-size: 11px;
+
+    letter-spacing: .08em;
+}
+
+
+/* WAIT */
+
+.wait {
+    background: white;
+
+    flex-direction: column;
+
+    text-align: center;
+}
+
+.wait h2 {
+    font-size: clamp(55px, 8vw, 100px);
+}
+
+.wait > p:not(.kicker) {
+    color: var(--muted);
+
+    margin: 25px 0 30px;
+}
+
+.floating-heart {
+    font-size: 130px;
+
+    color: #e4a2a8;
+
+    opacity: .25;
+
+    position: absolute;
+}
+
+
+/* LAHARI */
+
+.lahari-entry {
+    background: #f9e9e7;
+
+    gap: 8vw;
+}
+
+.entry-text {
+    max-width: 480px;
+}
+
+.entry-text h3 {
+    font:
+        500 54px
+        "Cormorant Garamond";
+
+    color: var(--red);
+
+    margin: 35px 0 0;
+}
+
+.lahari-entry figure {
+    width: min(42vw, 520px);
+
+    margin: 0;
+}
+
+.lahari-entry img {
+    width: 100%;
+
+    height: 70vh;
+
+    object-fit: cover;
+
+    border-radius: 20px;
+
+    box-shadow: 0 30px 70px #7418241c;
+}
+
+
+/* PAIR */
+
+.pair {
+    display: block;
+}
+
+.pair-photos.two {
+    max-width: 1000px;
+
+    margin: auto;
+
+    display: grid;
+
+    grid-template-columns: 1fr 1fr;
+
+    gap: 20px;
+}
+
+.pair-photos img {
+    width: 100%;
+
+    height: 58vh;
+
+    object-fit: cover;
+
+    border-radius: 18px;
+}
+
+.single-photo {
+    max-width: 800px;
+
+    margin: auto;
+}
+
+.single-photo img {
+    width: 100%;
+
+    height: 65vh;
+
+    object-fit: cover;
+
+    border-radius: 18px;
+}
+
+.varsh-pair {
+    background: white;
+}
+
+
+/* THREE */
+
+.trio {
+    display: block;
+
+    background: #f8e9e7;
+}
+
+.trio-grid {
+    max-width: 1100px;
+
+    margin: auto;
+
+    display: grid;
+
+    grid-template-columns: 1.1fr .9fr;
+
+    gap: 16px;
+}
+
+.trio-grid img {
+    width: 100%;
+
+    height: 38vh;
+
+    object-fit: cover;
+
+    border-radius: 16px;
+}
+
+.trio-grid img:first-child {
+    height: 58vh;
+
+    grid-row: span 2;
+}
+
+.chaos {
+    display: flex;
+
+    justify-content: center;
+    align-items: center;
+
+    gap: 18px;
+
+    margin: 55px auto 30px;
+
+    font-weight: 700;
+
+    letter-spacing: .18em;
+
+    color: var(--red);
+
+    font-size: 13px;
+}
+
+.chaos b {
+    font-size: 25px;
+
+    font-weight: 400;
+}
+
+.trio-copy {
+    text-align: center;
+
+    font:
+        500 29px/1.3
+        "Cormorant Garamond";
+
+    max-width: 650px;
+
+    margin: auto;
+}
+
+.trio-copy b {
+    color: var(--red);
+}
+
+
+/* END */
+
+.ending {
+    min-height: 110vh;
+
+    display: block;
+
+    text-align: center;
+
+    background:
+        linear-gradient(
+            135deg,
+            #fff,
+            #f9e5e3
+        );
+}
+
+.end-card {
+    padding-top: 10vh;
+}
+
+.end-card h2 {
+    font-size: clamp(58px, 8vw, 105px);
+}
+
+.why {
+    color: var(--muted);
+
+    margin: 45px 0 25px;
+}
+
+.colors {
+    display: flex;
+
+    justify-content: center;
+
+    gap: 70px;
+}
+
+.colors > div {
+    display: flex;
+
+    align-items: center;
+
+    gap: 14px;
+
+    text-align: left;
+}
+
+.swatch {
+    width: 44px;
+    height: 44px;
+
+    border-radius: 50%;
+
+    display: block;
+
+    border: 1px solid var(--line);
+}
+
+.swatch.white {
+    background: white;
+}
+
+.swatch.red {
+    background: var(--red);
+
+    border-color: var(--red);
+}
+
+.colors p {
+    font-size: 13px;
+
+    line-height: 1.45;
+
+    margin: 0;
+}
+
+.between {
+    margin: 55px 0 0;
+
+    font:
+        500 30px/1.3
+        "Cormorant Garamond";
+}
+
+.between b {
+    color: var(--red);
+}
+
+
+/* FINAL NAMES */
+
+.final-names {
+    position: absolute;
+
+    bottom: 45px;
+
+    left: 0;
+
+    width: 100%;
+
+    font:
+        500 34px
+        "Cormorant Garamond";
+
+    letter-spacing: .04em;
+}
+
+.final-names span {
+    color: var(--red);
+
+    padding: 0 12px;
+}
+
+
+/* MOBILE */
+
+@media (max-width: 760px) {
+
+    .section {
+        padding: 75px 22px;
+
+        min-height: auto;
+    }
+
+    .hero,
+    .wait,
+    .ending {
+        min-height: 100vh;
+    }
+
+    .person,
+    .person.reverse,
+    .lahari-entry {
+        flex-direction: column;
+
+        gap: 35px;
+
+        text-align: center;
+    }
+
+    .copy,
+    .portrait,
+    .lahari-entry figure {
+        width: 100%;
+
+        max-width: 500px;
+    }
+
+    .portrait img {
+        height: 65vh;
+    }
+
+    .pair-gallery,
+    .pair-photos.two {
+        grid-template-columns: 1fr;
+    }
+
+    .pair-gallery img,
+    .pair-gallery .big img,
+    .pair-photos img {
+        height: 55vh;
+    }
+
+    .single-photo img {
+        height: 60vh;
+    }
+
+    .trio-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .trio-grid img:first-child {
+        height: 48vh;
+
+        grid-row: auto;
+    }
+
+    .trio-grid img {
+        height: 40vh;
+    }
+
+    .colors {
+        gap: 25px;
+    }
+
+    .colors p {
+        font-size: 12px;
+    }
+
+    .final-names {
+        font-size: 25px;
+    }
+
+    .music-note {
+        display: none;
+    }
+
+    .hero h1 {
+        font-size: 62px;
+    }
+
+    .section h2 {
+        font-size: 55px;
+    }
+
+    .copy h3 {
+        font-size: 48px;
+    }
+}
+
+
+/* SCROLL REVEAL */
+
+.reveal > * {
+    opacity: 0;
+
+    transform: translateY(22px);
+
+    transition:
+        opacity .8s ease,
+        transform .8s ease;
+}
+
+.reveal.show > * {
+    opacity: 1;
+
+    transform: none;
+}
+
+.reveal.show > *:nth-child(2) {
+    transition-delay: .08s;
+}
+
+.reveal.show > *:nth-child(3) {
+    transition-delay: .16s;
+}
+
+.reveal.show > *:nth-child(4) {
+    transition-delay: .24s;
+}
